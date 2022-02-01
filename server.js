@@ -3,7 +3,7 @@ const express = require("express");
 const path = require("path");
 const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
-const db = require("./db/db.json");
+const storedNotes = require("./db/db.json");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -27,21 +27,21 @@ app.get("/notes", (req, res) =>
 
 // GET request to get stored notes in the '/db/db.json' file
 app.get("/api/notes", (req, res) => {
-  res.json(db);
+  res.json(storedNotes);
 });
 
 // ALL POST REQUESTS HERE
 // POST request to add note to db.json file
 
-app.get("/api/notes", (req, res) => {
+app.post("/api/notes", (req, res) => {
   console.info(`${req.method} and added to notes db`);
 
   const { title, text } = req.body;
   if (title && text) {
     const newNote = { title, text, id: uuidv4 };
 
-    db.push(newNote);
-    fs.writeFile("./db/db.json", JSON.stringify(db, null, 2), (err) =>
+    storedNotes.push(newNote);
+    fs.writeFile("./db/db.json", JSON.stringify(storedNotes, null, 2), (err) =>
       err ? console.log(err) : console.log(`${newNote.title} has been created.`)
     );
 
@@ -62,9 +62,13 @@ app.get("/api/notes", (req, res) => {
 app.delete("api/notes/:id", (req, res) => {
   const id = req.params.id;
   if (id) {
-    db = db.filter((item) => item.id !== id);
+    storedNotes = storedNotes.filter((item) => item.id !== id);
 
-    fs.writeFile("db/db.json", JSON.stringify(db, null, 2), (err) => err);
+    fs.writeFile(
+      "db/db.json",
+      JSON.stringify(storedNotes, null, 2),
+      (err) => err
+    );
 
     const response = {
       status: "success",
