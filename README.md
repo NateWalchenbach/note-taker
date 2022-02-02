@@ -10,8 +10,8 @@ Homework 11 Express.js: Note Taker
 
 ## Image of Project
 
-![Alt text](./Assets/Screenshot_1)
-![Alt text](./Assets/Screenshot_2)
+![Img](./Assets/Screenshot_1.png)
+![Img](./Assets/Screenshot_2.png)
 
 ## Links
 
