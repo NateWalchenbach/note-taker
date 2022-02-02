@@ -1,10 +1,18 @@
 [
   {
-    "title": "Test Title",
-    "text": "Test text"
+    "title": "Morning Stand up",
+    "text": "10:00am"
   },
   {
-    "title": "asdf",
-    "text": "asdf"
+    "title": "Meeting with Dave",
+    "text": "10:30am"
+  },
+  {
+    "title": "Code Block",
+    "text": "1:00pm - 3:00pm"
+  },
+  {
+    "title": "End of the day cleanup",
+    "text": "4:00pm"
   }
 ]
