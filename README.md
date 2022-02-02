@@ -2,8 +2,6 @@
 
 Homework 11 Express.js: Note Taker
 
-Note Taker server-side code written per acceptance criteria in [provided_assets/W11-hw_readme.md](/provided_assets/W11-hw_readme.md).
-
 ## Work Done
 
 - When the Note Taker opens, user presented with a landing page with a link to a notes page
