@@ -8,6 +8,11 @@ Homework 11 Express.js: Note Taker
 - When you are in the note taking page, the user is able to create a note with a text body and title.
 - Once the user has created a note, then he/she can save it into an ordered list on the right hand side of the screen.
 
+## Image of Project
+
+![Alt text](./Assets/Screenshot_1)
+![Alt text](./Assets/Screenshot_2)
+
 ## Links
 
 URL for GitHub repo: https://github.com/NateWalchenbach/note-taker
