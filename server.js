@@ -37,7 +37,7 @@ app.post("/api/notes", (req, res) => {
   console.info(`${req.method} and added to notes db`);
 
   const { title, text, uuidv4 } = req.body;
-  if (title && text) {
+  if (title && text && uuidv4) {
     const newNote = { title, text, id: uuidv4 };
 
     storedNotes.push(newNote);
