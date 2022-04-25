@@ -1,17 +1,25 @@
 {
   "name": "note-taker",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a web app to jot down some notes. There is no authentication, so beware that anyone can add or delete your notes!",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NateWalchenbach/note-taker.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NateWalchenbach/note-taker/issues"
+  },
+  "homepage": "https://github.com/NateWalchenbach/note-taker#readme",
   "dependencies": {
-    "express": "^4.16.4",
-    "path": "^0.12.7",
-    "util": "^0.12.4",
+    "express": "^4.17.3",
     "uuid": "^8.3.2"
   }
 }

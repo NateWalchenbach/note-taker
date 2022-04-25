@@ -1,87 +1,27 @@
-// Import
-const express = require("express");
-const path = require("path");
-const fs = require("fs");
-const { v4: uuidv4 } = require("uuid");
-const storedNotes = require("./db/db.json");
+const express = require('express');
+const path = require('path');
 
-const app = express();
+const api = require('./routes/index.js');
+
 const PORT = process.env.PORT || 3001;
 
-// Middleware to parse JSON and unleancoded form data
-app.use(express.urlencoded({ extended: true }));
+const app = express();
+
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use('/api', api);
 
-app.use(express.static("public"));
+app.use(express.static('public'));
 
-//  ALL GET REQUESTS HERE
-// GET route for the home page
-app.get("/", (req, res) =>
-  res.sendFile(path.join(__dirname, "./public/index.html"))
-);
-
-// GET route for /notes URL
-app.get("/notes", (req, res) =>
-  res.sendFile(path.join(__dirname, "/public/notes.html"))
-);
-
-// GET request to get stored notes in the '/db/db.json' file
-app.get("/api/notes", (req, res) => {
-  res.json(storedNotes);
+app.get('/notes', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/notes.html'));  
 });
 
-// ALL POST REQUESTS HERE
-// POST request to add note to db.json file
-
-app.post("/api/notes", (req, res) => {
-  console.info(`${req.method} and added to notes db`);
-
-  const { title, text, uuidv4 } = req.body;
-  if (title && text && uuidv4) {
-    const newNote = { title, text, id: uuidv4 };
-
-    storedNotes.push(newNote);
-    fs.writeFile("./db/db.json", JSON.stringify(storedNotes, null, 2), (err) =>
-      err ? console.log(err) : console.log(`${newNote.title} has been created.`)
-    );
-
-    const response = {
-      status: "success",
-      body: newNote,
-    };
-    console.log(response);
-    res.status(201).json(response);
-  } else {
-    res.status(500).JSON("Error making note💥");
-  }
+// This is a fallback
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html')) 
 });
 
-// DELETE ROUTES  GO HERE
-// DELETE request
-
-app.delete("api/notes/:id", (req, res) => {
-  const id = req.params.id;
-  if (id) {
-    storedNotes = storedNotes.filter((item) => item.id !== id);
-
-    fs.writeFile(
-      "db/db.json",
-      JSON.stringify(storedNotes, null, 2),
-      (err) => err
-    );
-
-    const response = {
-      status: "success",
-      body: newNote,
-    };
-    console.log(response);
-    res.status(201).json(response);
-  } else {
-    res.status(500).json("Error deleting your note");
-  }
+app.listen(PORT, () => {
+    console.log(`note-taker app listening on PORT: ${PORT}`);
 });
-
-// PORT LISTENER
-app.listen(PORT, () =>
-  console.log(`Example app listening at http://localhost:${PORT} 🚀`)
-);
