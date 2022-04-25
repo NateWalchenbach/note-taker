@@ -1,22 +1,17 @@
 [
   {
-    "title": "Morning Stand up",
-    "text": "10:00am"
+    "id": "e45e",
+    "title": "Grocery List",
+    "text": "Milk, Eggs, Cheese"
   },
   {
-    "title": "Meeting with Dave",
-    "text": "10:30am"
+    "id": "a240",
+    "title": "Class Notes",
+    "text": "CS201 - Intro to Programming"
   },
   {
-    "title": "Code Block",
-    "text": "1:00pm - 3:00pm"
-  },
-  {
-    "title": "End of the day cleanup",
-    "text": "4:00pm"
-  },
-  {
-    "title": "asdf",
-    "text": "asdf"
+    "id": "03a4",
+    "title": "Reminder!",
+    "text": "Don't forget to pick up the kids!!!!"
   }
 ]
